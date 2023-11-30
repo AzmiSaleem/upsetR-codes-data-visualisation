@@ -1,0 +1,67 @@
+---
+title: "Untitled"
+author: "AZMI"
+date: "2023-09-21"
+output: html_document
+---
+
+```{r}
+setwd("C:/Users/shiha/OneDrive/Desktop/SIG_GENES/PE_POS")
+```
+
+```{r}
+#install.packages("UpSetR")
+library(UpSetR)
+
+```
+```{r}
+# Example data (replace with your actual datasets)
+PE8 <- read.csv("PE8UP_HisSig_Intersection.csv")$GeneID
+PE9 <- read.csv("PE9UP_HisSig_Intersection.csv")$GeneID
+PE10 <- read.csv("PE10UP_HisSig_Intersection.csv")$GeneID
+PE11 <- read.csv("PE11UP_HisSig_Intersection.csv")$GeneID
+PE12 <- read.csv("PE12UP_HisSig_Intersection.csv")$GeneID
+PE13 <- read.csv("PE13UP_HisSig_Intersection.csv")$GeneID
+PE14 <- read.csv("PE14UP_HisSig_Intersection.csv")$GeneID
+PE15 <- read.csv("PE15UP_HisSig_Intersection.csv")$GeneID
+PE16 <- read.csv("PE15UP_HisSig_Intersection.csv")$GeneID
+
+```
+
+
+
+
+```{r}
+# Create a list of sets
+set_list <- list(
+  PEWK8UP = PE8,
+  PEWK9UP = PE9,
+  PEWK10UP = PE10,
+  PEWK11UP = PE11,
+  PEWK12UP = PE12,
+  PEWK13UP = PE13,
+  PEWK14UP = PE14,
+  PEWK15UP = PE15,
+  PEWK16UP = PE16
+)
+
+```
+```{r}
+# Create the UpSet plot
+upset(
+  fromList(set_list), 
+  sets = c("PEWK8UP", "PEWK9UP", "PEWK10UP", "PEWK11UP", "PEWK12UP", "PEWK13UP", "PEWK14UP", "PEWK15UP", "PEWK16UP"),
+  mb.ratio = c(0.6,0.4),  # Adjust the main bar ratio for your preference
+  main.bar.color = "Brown",
+  order.by = "freq",  # Ordering by frequency for a clearer visualization
+  
+  matrix.color = "red",
+  point.size = 2,
+  sets.bar.color = c("maroon", "blue", "purple", "green", "orange", "pink", "brown", "cyan", "grey"),
+)
+
+
+
+```
+
+
